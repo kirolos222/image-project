@@ -3,8 +3,8 @@ import path from 'path';
 import fs from 'fs';
 import fsExists from 'fs.promises.exists';
 import sharp from 'sharp';
-const image = express.Router();
-image.get('/', async (req: express.Request, res: express.Response) => {
+const image = express.Router() ;
+image.get('/',  async (req: express.Request, res: express.Response): Promise<string|undefined> => {
   const imgname = req.query.imgname as string;
   const wi = req.query.wi as string;
   const wi2 = Number(wi);                     //get the img and width and height
@@ -18,21 +18,23 @@ image.get('/', async (req: express.Request, res: express.Response) => {
       fs.mkdirSync(dir);        //creat thumbnail file once
     }
   } if (imgname === undefined) {
-    return res.status(404).send(`the image file is undefined`);
+    return res.status(404).send(`the image file is undefined`) as unknown as string;
   } else if (!istrue && imgname != '') {
-    return res.status(404).send(`the image file doesn't exist`);
+    return res.status(404).send(`the image file doesn't exist`)as unknown as string;
   }  else if (imgname === '') {
     return res
       .status(404)
-      .send(` imgname needs a value, please reenter the value`);
+      .send(` imgname needs a value, please reenter the value`)as unknown as string;
   } 
   else if((wi2===NaN||hi2===NaN)||(wi===undefined|| hi===undefined)||(wi2===0||hi2===0)){
-    return res.status(400).send('unknown width && height');
+    return res.status(400).send('unknown width && height')as unknown as string;
   } 
   
   gho();
     const hg = (path.resolve('./') +
       `/images/thumbnail/${imgname}-${wi}-${hi}.jpg`) as string;
+      if(fs.existsSync(hg)===true)
+      return  res.status(200).sendFile(hg) as unknown as string;
     sharp(existimg)
       .resize({
         width: wi2,

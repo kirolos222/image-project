@@ -20,8 +20,8 @@ it('gets the api endpoint',  (done):void => {
     supertest(index).get('/image?').expect(404,done)
        }
 )
-it('gets the api endpoint',  (done):void => {
-    supertest(index).get('/image?imgname=fjord&wi=100&hi=200').expect(200,done)
+it('gets the api endpoint',  ():void => {
+    supertest(index).get('/image?imgname=fjord&wi=100&hi=200').expect(200)
        }
 )
 it('gets the api endpoint',  ():void => {
