@@ -3,8 +3,9 @@ import fs from 'fs'
 import express from 'express'
 import path from 'path'
 const dir = path.resolve('./') + '/images/thumbnail'
+const yes = fs.existsSync(dir)
 function gho (): void {
-  if (!fs.existsSync(dir)) {
+  if (!yes) {
     fs.mkdirSync(dir) // creat thumbnail file once
   }
 }
