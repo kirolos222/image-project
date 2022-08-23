@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.ts",
-    "prettier": "prettier --config .prettierrc.json \"src/routes/api/image.ts\" \"src/index.ts\" \"src/tests/imageSpec.ts\" \"src/tests/helpers/reporter.ts\" \"src/routes/index.ts\"  --write",
-    "lint": "eslint --ext .eslintrc.json src/index.ts",
+    "prettier": "prettier --config .prettierrc.json  src/**/*.ts  --write",
+    "lint": "eslint --ext .eslintrc.json src/**/*.ts ",
     "parser": "@typescript-eslint/parser",
     "build": "npx tsc",
     "jasmine": "jasmine",
