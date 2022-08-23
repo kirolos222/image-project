@@ -1,0 +1,5 @@
+//this file is give quick example to how to test the the project
+//to run the project you can try an example like
+//to test the project
+//http://localhost:4000/image?imgname=thephotoname&wi=yourwidth&hi=yourheight
+//if you don't provide the width and height it will give an unknown message in the UI
